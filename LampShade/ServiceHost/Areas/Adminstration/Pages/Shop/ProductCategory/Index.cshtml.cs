@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Contracts.IApplication;
 using ShopManagement.Application.Contracts.ProductCategorys;
 
 namespace ServiceHost.Areas.Adminstration.Pages.Shop.ProductCategory

@@ -4,7 +4,6 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:55928",
-      "launchUrl": "Adminstration/shop/productCategory",
       "sslPort": 44384
     }
   },

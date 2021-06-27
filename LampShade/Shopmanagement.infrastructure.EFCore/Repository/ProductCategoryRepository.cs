@@ -18,6 +18,16 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
             _context = context;
         }
 
+        public List<ProductCategoryViewModel> GetProductsCategory()
+        {
+            
+            return _context.ProductCategories.Select(x => new ProductCategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+        }
+
         public EditProductCategory GetDetails(long id)
         {
             return _context.ProductCategories.Select(x => new EditProductCategory
@@ -42,7 +52,7 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
                     Id = x.Id,
                     Name = x.Name,
                     Picture = x.Picture,
-                    CreationDate = x.CreationDate.ToString(),
+                    CreationDate = x.CreationDate.ToString()
                 });
 
 

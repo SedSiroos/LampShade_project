@@ -5,7 +5,6 @@ SinglePage.LoadModal = function () {
     if (!url.startsWith("#showmodal")) {
         return;
     }
-
     url = url.split("showmodal=")[1];
     $.get(url,
         null,
