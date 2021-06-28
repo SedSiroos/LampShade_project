@@ -21,6 +21,8 @@ namespace ShopManagement.Application.Contracts.Slides
         public string Title { get; set; }
 
         public string Text { get; set; }
+        public string Link { get; set; }
+
 
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string BtnText { get; set; }
