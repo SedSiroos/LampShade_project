@@ -1,16 +1,15 @@
-﻿
-@page
-@model ServiceHost.Areas.Adminstration.Pages.Shop.Slides.IndexModel
+﻿@page
+@model ServiceHost.Areas.Adminstration.Pages.Discounts.ColleagueDiscounts.IndexModel
 @{
     Layout = "Shared/_AdminLayout";
-    ViewData["title"] = "مدیریت عکس";
+    ViewData["title"] = "مدیریت تخفیفات همکاری";
 }
 
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">ایجاد اسلاید جدید</a>
+            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index","Create")">تعریف تخفیفات همکاری</a>
         </p>
     </div>
 </div>
@@ -18,16 +17,30 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">جستجو در اسلایدر</h3>
-                        </div>
-                        <div class="panel-body">
-                        </div>
+            <div class="panel-heading">
+                <h3 class="panel-title">جستجو در تخفیفات همکاری</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" role="form" method="get">
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="Search.ProductId"></label>
+                        <select class="form-control" asp-for="Search.ProductId" asp-items="Model.Products">
+                            <option value="0">انتخاب محصول ...</option>
+                        </select>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
+                    <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="ProductCategoriesDiv">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> لیست تخفیفات همکاری @Model.ColleagueDiscount.Count</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -36,49 +49,45 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>عکس</th>
-                                    <th>سرتیتر</th>
-                                    <th>عنوان</th>
+                                    <th>محصول</th>
+                                    <th>درصدتخفیف</th>
                                     <th>وضعیت</th>
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.Slides)
+                                @foreach (var item in Model.ColleagueDiscount)
                                 {
                                     <tr>
                                         <td>@item.Id</td>
+                                        <td>@item.Product</td>
+                                        <td>@item.DiscountRate%</td>
                                         <td>
-                                            <img src="@item.Picture" style="width: 70px; height: 70px" />
-                                        </td>
-                                        <td>@item.Heading</td>
-                                        <td>@item.Title</td>
-                                        <td class="text-center">
                                             @if (!item.IsRemove)
                                             {
-                                                <i class="fa fa-check fa-3x text-success"></i>
+                                            <i class="fa fa-2x fa-check text-success"></i>
                                             }
                                             else
                                             {
-                                                <i class="fa fa-remove fa-3x text-danger"></i>
+                                        <i class="fa fa-2x fa-remove text-danger"></i>
                                             }
                                         </td>
                                         <td>@item.CreationDate</td>
                                         <td>
-                                            <a class="btn btn-warning waves-effect waves-light m-b-5"
+                                            <a class="btn btn-secondary m-b-5"
                                                href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                 <i class="fa fa-edit"></i> ویرایش
                                             </a>
                                             @if (!item.IsRemove)
                                             {
-                                                <a asp-page="./Index" asp-page-handler="Remove" asp-route-id="@item.Id"
-                                                   class="btn btn-danger waves-effect waves-light m-b-5">حذف</a>
+                                                <a  asp-page="./Index" asp-page-handler="Remove" asp-route-id="@item.Id"
+                                                    class="btn btn-danger m-b-5">حذف</a>
                                             }
                                             else
                                             {
                                                 <a asp-page="./Index" asp-page-handler="Restore" asp-route-id="@item.Id"
-                                                   class="btn btn-success waves-effect waves-light m-b-5">فعال سازی</a>
+                                                   class="btn btn-success m-b-5">بازگردانی</a>
                                             }
                                         </td>
                                     </tr>

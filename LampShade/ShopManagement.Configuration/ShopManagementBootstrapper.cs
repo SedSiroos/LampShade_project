@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _01_LampShadeQuery.Contracts.ProductCategory;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Shopmanagement.infrastructure.EFCore.Repository;
 using ShopManagement.Application;
@@ -33,6 +34,7 @@ namespace ShopManagement.Configuration
             services.AddTransient<ISlideRepository,SlideRepository>();
 
             services.AddTransient<ISlideQuery, SlideQuery>();
+            services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
 
             services.AddDbContext<ShopContext>(option =>
                 option.UseSqlServer(connectionString));
