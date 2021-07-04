@@ -17,7 +17,11 @@ namespace InventoryManagement.Domain.InventoryAgg
             UnitPrice = unitPrice;
             InStock = false;
         }
-
+        public void Edit (long productId, double unitPrice)
+        {
+            ProductId = productId;
+            UnitPrice = unitPrice;
+        }
         public long CalculateCurrentCount()
         {
             var plus = InventoryOperations.Where(x => x.Operation).Sum(x => x.Count);
@@ -28,8 +32,8 @@ namespace InventoryManagement.Domain.InventoryAgg
         public void Increase(long count,long operatorId,string description)
         {
             var currentCount =CalculateCurrentCount()+count ;
-            var operation = new InventoryOperation(true, count, operatorId,
-                currentCount, description, 0, Id);
+
+            var operation = new InventoryOperation(true, count, operatorId,currentCount, description, 0, Id);
             InventoryOperations.Add(operation);
 
             InStock = currentCount > 0;

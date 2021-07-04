@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\0_Framwork\0_Framework.csproj" />
+    <ProjectReference Include="..\InventoryManagment.Domain\InventoryManagement.Domain.csproj" />
     <ProjectReference Include="..\InvetoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj" />
   </ItemGroup>
 
