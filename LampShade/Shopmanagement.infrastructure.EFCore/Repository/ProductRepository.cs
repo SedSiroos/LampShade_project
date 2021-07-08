@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
-using ShopManagement.Application.Contracts.ProductCategorys;
 using ShopManagement.Domain.ProductAgg;
 
 namespace Shopmanagement.infrastructure.EFCore.Repository
@@ -61,7 +58,6 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
                 CategoryId = x.CategoryId,
                 CreationDate = x.CreationDate.ToFarsi(),
                 Category = x.ProductCategory.Name,
-                IsInStock = x.IsInStock
             });
 
             if (!string.IsNullOrWhiteSpace(model.Name))

@@ -28,13 +28,13 @@ namespace ServiceHost.Areas.Adminstration.Pages.Discounts.ColleagueDiscounts
 
         public void OnGet(ColleagueDiscountSearchModel searchModel)
         {
-            Products = new SelectList(_productApplication.GetProducs(), "Id", "Name");
+            Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
             ColleagueDiscount = _colleagueDisCountApplication.Search(searchModel);
 
         }
         public IActionResult OnGetCreate()
         {
-            var entity = new DefineColleagueDiscount {Products = _productApplication.GetProducs()};
+            var entity = new DefineColleagueDiscount {Products = _productApplication.GetProducts()};
             return Partial("./Create", entity);
         }
 
@@ -48,7 +48,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Discounts.ColleagueDiscounts
         public IActionResult OnGetEdit(long id)
         {
             var colleagueId = _colleagueDisCountApplication.GetDetails(id);
-            colleagueId.Products = _productApplication.GetProducs();
+            colleagueId.Products = _productApplication.GetProducts();
             return Partial("./Edit", colleagueId);
         }
 

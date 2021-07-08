@@ -24,7 +24,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Shop.ProductPictures
 
         public void OnGet(ProductPictureSearchModel searchModel)
         {
-            Products = new SelectList(_productApplication.GetProducs(), "Id", "Name");
+            Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
             ProductPictures = _productPictureApplication.SearchModel(searchModel);
         }
 
@@ -32,7 +32,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Shop.ProductPictures
         {
             var command = new CreateProductPicture
             {
-                ListProduct = _productApplication.GetProducs()
+                ListProduct = _productApplication.GetProducts()
             };
             return Partial("./Create", command);
         }
@@ -46,7 +46,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Shop.ProductPictures
         public IActionResult OnGetEdit(long id)
         {
            var product = _productPictureApplication.GetDetails(id);
-           product.ListProduct = _productApplication.GetProducs();
+           product.ListProduct = _productApplication.GetProducts();
 
             return Partial("Edit", product);
         }

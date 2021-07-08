@@ -4,6 +4,8 @@ namespace InventoryManagement.Domain.InventoryAgg
 {
     public class InventoryOperation
     {
+        protected InventoryOperation() { }
+
         public long Id { get; private set; }
         public bool Operation { get; private set; }
         public long Count { get; private set; }

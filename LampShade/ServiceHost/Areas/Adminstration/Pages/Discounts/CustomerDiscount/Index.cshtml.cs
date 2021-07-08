@@ -24,7 +24,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Discounts.CustomerDiscount
 
         public void OnGet(CustomerDiscountSearchModel searchModel)
         {
-            ProductList = new SelectList(_productApplication.GetProducs(), "Id", "Name");
+            ProductList = new SelectList(_productApplication.GetProducts(), "Id", "Name");
             CustomerDiscount = _customerDiscount.SearchModel(searchModel);
         }
 
@@ -33,7 +33,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Discounts.CustomerDiscount
         {
             var command = new DefineCustomerDiscount
             {
-                Products = _productApplication.GetProducs()
+                Products = _productApplication.GetProducts()
             };
             return Partial("./Create", command);
         }
@@ -48,7 +48,7 @@ namespace ServiceHost.Areas.Adminstration.Pages.Discounts.CustomerDiscount
         public IActionResult OnGetEdit(long id)
         {
             var customerId=_customerDiscount.GetDetails(id);
-            customerId.Products = _productApplication.GetProducs();
+            customerId.Products = _productApplication.GetProducts();
 
             return Partial("./Edit",customerId);
         }

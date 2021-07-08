@@ -9,7 +9,7 @@ namespace InventoryManagement.Domain.InventoryAgg
         public long ProductId { get; private set; }
         public double UnitPrice { get; private set; }
         public bool InStock { get; private set; }
-        public List<InventoryOperation> InventoryOperations { get; private set; }
+        public List<InventoryOperation> Operations { get; private set; }
 
         public Inventory(long productId, double unitPrice)
         {
@@ -24,29 +24,29 @@ namespace InventoryManagement.Domain.InventoryAgg
         }
         public long CalculateCurrentCount()
         {
-            var plus = InventoryOperations.Where(x => x.Operation).Sum(x => x.Count);
-            var minus = InventoryOperations.Where(x => !x.Operation).Sum(x => x.Count);
+            var plus = Operations.Where(x => x.Operation).Sum(x => x.Count);
+            var minus = Operations.Where(x => !x.Operation).Sum(x => x.Count);
             return plus - minus;
         }
 
         public void Increase(long count,long operatorId,string description)
         {
             var currentCount =CalculateCurrentCount()+count ;
-
             var operation = new InventoryOperation(true, count, operatorId,currentCount, description, 0, Id);
-            InventoryOperations.Add(operation);
+            Operations.Add(operation);
 
             InStock = currentCount > 0;
         }
 
         public void Reduce(long count,long operatorId,string description,long orderId)
         {
-            var currentCount =CalculateCurrentCount()+count ;
+            var currentCount =CalculateCurrentCount()-count ;
             var operation = new InventoryOperation(false, count, operatorId,
                 currentCount,description,orderId,Id);
-            InventoryOperations.Add(operation);
+            Operations.Add(operation);
 
             InStock = currentCount > 0;
         }
     }
 }
+    

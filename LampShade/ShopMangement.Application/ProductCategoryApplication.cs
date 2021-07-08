@@ -22,7 +22,7 @@ namespace ShopManagement.Application
             if (_categoryRepository.Exists(x=>x.Name==command.Name))
                 return operation.Failed(ApplicationMessage.DuplicatedRecord);
 
-                var slug = command.Slug.Slugify();
+            var slug = command.Slug.Slugify();
             var productCategory = new ProductCategory(command.Name, command.Description, command.Picture,
                 command.PictureAlt,
                 command.PictureTitle, command.KeyWords, command.MetaDescription,slug);

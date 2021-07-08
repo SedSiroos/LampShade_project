@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shopmanagement.infrastructure.EFCore;
 
 namespace Shopmanagement.infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20210707114442_eiteProdutCatgoryMxLenghDescriptionAndMetaDescrriptin")]
+    partial class eiteProdutCatgoryMxLenghDescriptionAndMetaDescrriptin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +33,8 @@ namespace Shopmanagement.infrastructure.EFCore.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -42,8 +44,8 @@ namespace Shopmanagement.infrastructure.EFCore.Migrations
 
                     b.Property<string>("Keywords")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("MetaDescription")
                         .IsRequired()
@@ -70,8 +72,8 @@ namespace Shopmanagement.infrastructure.EFCore.Migrations
 
                     b.Property<string>("ShortDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("Slug")
                         .IsRequired()

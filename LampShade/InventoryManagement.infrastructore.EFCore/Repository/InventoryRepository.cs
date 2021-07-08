@@ -34,9 +34,28 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
             return _inventoryContext.Inventory.FirstOrDefault(x => x.ProductId == productId);
         }
 
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            var inventory = _inventoryContext.Inventory.FirstOrDefault(x => x.Id ==inventoryId);
+
+            return inventory.Operations.Select(x => new InventoryOperationViewModel
+            {
+                Id = x.Id,
+                Count = x.Count,
+                Description = x.Description,
+                CurrentCount = x.CurrentCount,
+                Operation = x.Operation,
+                OperationDateTime = x.OperationDateTime.ToFarsi(),
+                OrderId = x.OrderId,
+                OperatorId = x.OperationId,
+                Operator = "مدیرسایت",
+
+            }).OrderByDescending(x => x.Id).ToList();
+        }
+
         public List<InventoryViewModel> Search(InventorySearchModel searchModel)
         {
-            var product = _shopContext.Products.Select(x => new {x.Id, x.Name});
+            var product = _shopContext.Products.Select(x => new {x.Id, x.Name}).ToList();
 
             var query = _inventoryContext.Inventory
                 .Select(x => new InventoryViewModel

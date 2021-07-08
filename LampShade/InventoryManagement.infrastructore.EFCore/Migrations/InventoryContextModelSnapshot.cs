@@ -68,7 +68,7 @@ namespace InventoryManagement.Infrastructure.EFCore.Migrations
                     b.Property<DateTime>("OperationDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("OperationId")
+                    b.Property<long>("OperatorId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("OrderId")
@@ -84,7 +84,7 @@ namespace InventoryManagement.Infrastructure.EFCore.Migrations
             modelBuilder.Entity("InventoryManagement.Domain.InventoryAgg.InventoryOperation", b =>
                 {
                     b.HasOne("InventoryManagement.Domain.InventoryAgg.Inventory", "Inventory")
-                        .WithMany("InventoryOperations")
+                        .WithMany("Operations")
                         .HasForeignKey("InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
