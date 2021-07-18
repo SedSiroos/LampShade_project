@@ -19,6 +19,11 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
             _context = context;
         }
 
+        public string GetSlugById(long id)
+        {
+            return _context.ProductCategories.Find(id).Slug;
+        }
+
         public List<ProductCategoryViewModel> GetProductsCategory()
         {
             
@@ -38,7 +43,7 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
                 Description = x.Description,
                 KeyWords = x.KeyWords,
                 MetaDescription = x.MetaDescription,
-                Picture = x.Picture,
+                //Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Slug = x.Slug

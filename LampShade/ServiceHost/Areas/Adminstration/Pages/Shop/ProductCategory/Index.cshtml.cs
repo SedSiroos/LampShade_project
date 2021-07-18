@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductCategorys;
@@ -35,9 +37,9 @@ namespace ServiceHost.Areas.Adminstration.Pages.Shop.ProductCategory
 
         public IActionResult OnGetEdit(long id)
         {
-           var productCategoreis = _categoryApplication.GetDetails(id);
+           var productCategories = _categoryApplication.GetDetails(id);
 
-            return Partial("Edit", productCategoreis);
+            return Partial("Edit", productCategories);
         }
 
         public JsonResult OnPostEdit(EditProductCategory command)

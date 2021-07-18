@@ -19,13 +19,20 @@ namespace Shopmanagement.infrastructure.EFCore.Repository
            _context = context;
        }
 
+       public ProductPicture GetProductAndCategory(long id)
+       {
+           return _context.ProductPictures
+               .Include(x => x.Product)
+               .ThenInclude(x => x.ProductCategory)
+               .FirstOrDefault(x => x.Id == id);
+       }
+
        public EditProductPicture GetDetails(long id)
        {
               return  _context.ProductPictures
                   .Select(x => new EditProductPicture
                    {
                        Id = x.Id,
-                       Picture = x.Picture,
                        ProductId = x.ProductId,
                        PictureAlt = x.PictureAlt,
                        PictureTitle = x.PictureTitle

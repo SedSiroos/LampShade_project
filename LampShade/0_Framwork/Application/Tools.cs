@@ -37,10 +37,9 @@ namespace _0_Framework.Application
 
         public static string ToDiscountFormat(this DateTime date)
         {
-            if (date == new DateTime()) return "";
+            if (date == new DateTime())return "";
             return $"{date.Year}/{date.Month}/{date.Day}";
-        }
-
+        }   
         public static string GetTime(this DateTime date)
         {
             return $"_{date.Hour:00}_{date.Minute:00}_{date.Second:00}";

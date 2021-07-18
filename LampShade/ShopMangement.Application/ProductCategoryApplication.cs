@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _0_Framework.Application;
 using ShopManagement.Application.Contracts.ProductCategorys;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -8,12 +7,13 @@ namespace ShopManagement.Application
 {
     public class ProductCategoryApplication:IProductCategoryApplication
     {
-        
+        private readonly IFileUploader _fileUploader;
         private readonly IProductCategoryRepository _categoryRepository;
 
-        public ProductCategoryApplication(IProductCategoryRepository categoryRepository)
+        public ProductCategoryApplication(IProductCategoryRepository categoryRepository, IFileUploader fileUploader)
         {
             _categoryRepository = categoryRepository;
+            _fileUploader = fileUploader;
         }
 
         public OperationResult Create(CreateProductCategory command)
@@ -23,9 +23,11 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMessage.DuplicatedRecord);
 
             var slug = command.Slug.Slugify();
-            var productCategory = new ProductCategory(command.Name, command.Description, command.Picture,
-                command.PictureAlt,
-                command.PictureTitle, command.KeyWords, command.MetaDescription,slug);
+            var picturePath = $"{slug}";
+            var fileName = _fileUploader.Upload(command.Picture, picturePath);
+
+            var productCategory = new ProductCategory(command.Name, command.Description, fileName,
+                command.PictureAlt,command.PictureTitle, command.KeyWords, command.MetaDescription,slug);
 
             _categoryRepository.Create(productCategory);
             _categoryRepository.SaveChanges();
@@ -44,7 +46,11 @@ namespace ShopManagement.Application
 
 
             var slug = command.Slug.Slugify();
-            productCategory.Edit(command.Name,command.Description,command.Picture,command.PictureAlt,command.PictureTitle,
+
+            var picturePath = $"{command.Slug}";
+            var fileName = _fileUploader.Upload(command.Picture,picturePath);
+
+            productCategory.Edit(command.Name,command.Description,fileName,command.PictureAlt,command.PictureTitle,
                 command.KeyWords,command.MetaDescription,slug);
             _categoryRepository.SaveChanges();
             return operation.Succeeded();

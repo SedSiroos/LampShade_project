@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using _0_Framework.Application;
+using Microsoft.AspNetCore.Http;
 using ShopManagement.Application.Contracts.Product;
 
 namespace ShopManagement.Application.Contracts.ProductPictures
@@ -13,7 +12,7 @@ namespace ShopManagement.Application.Contracts.ProductPictures
         public long ProductId { get; set; }
 
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string PictureAlt { get; set; }

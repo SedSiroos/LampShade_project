@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiscountManagement.Infrastructur.EFCore\DiscountManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\InventoryManagement.infrastructore.EFCore\InventoryManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\Shopmanagement.infrastructure.EFCore\Shopmanagement.infrastructure.EFCore.csproj" />
   </ItemGroup>
 
