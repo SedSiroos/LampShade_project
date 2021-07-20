@@ -15,6 +15,8 @@ using ShopManagement.Domain.SlideAgg;
 using Shopmanagement.infrastructure.EFCore;
 using _01_LampShadeQuery.Contracts.Slide;
 using _01_LampShadeQuery.Query;
+using ShopManagement.Application.Contracts.Comments;
+using ShopManagement.Domain.CommentAgg;
 
 namespace ShopManagement.Configuration
 {
@@ -36,6 +38,9 @@ namespace ShopManagement.Configuration
 
             services.AddTransient<ISlideQuery, SlideQuery>();
             services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
+
+            services.AddTransient<ICommentApplication,CommentApplication>();
+            services.AddTransient<ICommentRepository,CommentRepository>();
 
             services.AddTransient<IProductQuery, ProductQuery>();
 
