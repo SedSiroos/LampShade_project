@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.ProductCategorys;
 using ShopManagement.Domain.ProductCategoryAgg;
 
-namespace Shopmanagement.infrastructure.EFCore.Repository
+namespace ShopManagement.Infrastructure.EFCore.Repository
 {
     public class ProductCategoryRepository:RepositoryBase<long,ProductCategory>, IProductCategoryRepository
     {

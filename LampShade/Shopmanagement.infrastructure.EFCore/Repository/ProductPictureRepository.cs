@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.ProductPictures;
 using ShopManagement.Domain.ProductPictureAgg;
 
-namespace Shopmanagement.infrastructure.EFCore.Repository
+namespace ShopManagement.Infrastructure.EFCore.Repository
 {
    public class ProductPictureRepository : RepositoryBase<long,ProductPicture> , IProductPictureRepository
    {

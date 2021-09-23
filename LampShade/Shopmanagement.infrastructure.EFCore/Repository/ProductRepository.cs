@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Domain.ProductAgg;
 
-namespace Shopmanagement.infrastructure.EFCore.Repository
+namespace ShopManagement.Infrastructure.EFCore.Repository
 {
     public class ProductRepository:RepositoryBase<long,Product>, IProductRepository
     {

@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiscountManagement.Domain\DiscountManagement.Domain.csproj" />
-    <ProjectReference Include="..\Shopmanagement.infrastructure.EFCore\Shopmanagement.infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\Shopmanagement.infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Shopmanagement.infrastructure.EFCore.Migrations
+namespace ShopManagement.Infrastructure.EFCore.Migrations
 {
     public partial class addComments : Migration
     {

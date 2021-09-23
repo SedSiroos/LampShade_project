@@ -1,7 +1,9 @@
+using System.Data;
 using _01_LampShadeQuery.Contracts.Product;
+using CommentManagement.Application.Contract.Comments;
+using CommentManagement.Infrastructure.EFCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Contracts.Comments;
 
 namespace ServiceHost.Pages
 {
@@ -23,9 +25,10 @@ namespace ServiceHost.Pages
             Product = _productQuery.GetProductDetails(id);
         }
 
-        public IActionResult OnPost(AddComment entity,string productSlug)
+        public IActionResult OnPost(AddComment command,string productSlug)
         {
-            var result = _commentApplication.AddComment(entity);
+            command.Type = CommentType.Product;
+            var result = _commentApplication.AddComment(command);
             return RedirectToPage("/Product", new {Id=productSlug});
         }
     }

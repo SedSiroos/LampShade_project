@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountManagement.Domain.CustomerDiscountAgg;
-using ShopManagement.Application.Contracts.Product;
-using Shopmanagement.infrastructure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EFCore.Repository
 {
@@ -73,8 +72,8 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                     DiscountRate = x.DiscountRate,
                     Reason = x.Reason,
                     ProductId = x.ProductId,
-                    StartDate = x.StartDate.ToString(),
-                    EndDate = x.EndDate.ToString(),
+                    StartDate = x.StartDate.ToString(CultureInfo.InvariantCulture),
+                    EndDate = x.EndDate.ToString(CultureInfo.InvariantCulture),
                 }).FirstOrDefault(x => x.Id == id);
         }
     }

@@ -1,6 +1,5 @@
 ﻿using _01_LampShadeQuery.Contracts.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
-using ServiceHost.Pages;
 
 namespace ServiceHost.ViewComponents
 {

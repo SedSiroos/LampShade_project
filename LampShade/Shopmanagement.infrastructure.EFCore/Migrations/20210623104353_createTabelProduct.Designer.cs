@@ -4,10 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Shopmanagement.infrastructure.EFCore;
 
-namespace Shopmanagement.infrastructure.EFCore.Migrations
+namespace ShopManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
     [Migration("20210623104353_createTabelProduct")]

@@ -1,7 +1,9 @@
 ﻿@page "{id}"
 @model ServiceHost.Pages.ProductModel
 @{
-    ViewData["Title"] = "محصول";
+    ViewData["Title"] = Model.Product.Name;
+    ViewData["keywords"] = Model.Product.Keywords;
+    ViewData["metaDescription"] = Model.Product.MetaDescription;
 }
 
 <div class="breadcrumb-area section-space--half">
@@ -10,13 +12,13 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-wrapper breadcrumb-bg">
                     <div class="breadcrumb-content">
-                        <h2 class="breadcrumb-content__title">@Model.Product.Name</h2>
+                        <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
                         <ul class="breadcrumb-content__page-map">
                             <li>
                                 <a asp-page="/Index">خانه</a>
                             </li>
                             <li>
-                                <a asp-page="/PCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
+                                <a asp-page="/PArticleCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
                             </li>
                             <li class="active">@Model.Product.Name</li>
                         </ul>
@@ -107,9 +109,9 @@
                                 <div class="col-lg-6">
                                     <div class="single-product-content-description">
                                         <p class="single-info">
-                                            <a asp-page="/PCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
+                                            <a asp-page="/PArticleCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
                                         </p>
-                                        <h4 class="product-title">@Model.Product.Name</h4>
+                                        <h2 class="product-title">@Model.Product.Name</h2>
                                         <div class="product-rating">
                                             <span class="rating">
                                                 <i class="ion-android-star active"></i>
@@ -120,7 +122,7 @@
                                             </span>
 
                                             <span class="review-count">
-                                                <a href="#">(2 نظر)</a> | <a href="#">ظنر خود را برای ما بنویسید</a>
+                                                <a href="#">(2 نظر)</a> | <a href="#">نظر خود را برای ما بنویسید</a>
                                             </span>
                                         </div>
 
@@ -163,11 +165,12 @@
                                         <div class="product-actions">
                                             <div class="quantity-selection">
                                                 <label>تعداد</label>
-                                                <input type="number" value="1" min="1">
+                                                <input type="number" value="1" min="1" id="productCount">
                                             </div>
 
                                             <div class="product-buttons">
-                                                <a class="cart-btn" href="#">
+                                                <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name',
+                                                '@Model.Product.DoublePrice', '@Model.Product.Picture')">
                                                     <i class="ion-bag">افزودن به سبد</i>
                                                 </a>
                                             </div>
@@ -217,7 +220,7 @@
                                                    data-toggle="tab" href="#product-description" role="tab"
                                                    aria-selected="true">توضیحات</a>
                                                 <a class="nav-item nav-link" id="review-tab" data-toggle="tab"
-                                                   href="#review" role="tab" aria-selected="false">نظرات ()</a>
+                                                   href="#review" role="tab" aria-selected="false">نظرات (@Model.Product.Comments.Count)</a>
                                             </div>
                                         </nav>
                                         <div class="tab-content" id="nav-tabContent">
@@ -234,18 +237,18 @@
                                                         <h4>4.5 <span>(Overall)</span></h4>
                                                         <span>Based on 9 Comments</span>
                                                     </div>
-                                                    @foreach (var Comment in Model.Product.Comments)
+                                                    @foreach (var comment in Model.Product.Comments)
                                                     {
                                                         <div class="ratings-wrapper">
 
                                                             <div class="sin-ratings">
                                                                 <div class="rating-author">
-                                                                    <h3>@Comment.Name</h3>
+                                                                    <h3>@comment.Name</h3>
 
                                                                 </div>
                                                             </div>
                                                             <p>
-                                                                @Comment.Message
+                                                                @comment.Message
                                                             </p>
                                                         </div>
                                                     }
@@ -254,6 +257,7 @@
                                                 <div class="rating-form-wrapper fix">
                                                     <h3>نظر خود را وارد کنید.</h3>
                                                     <form method="post">
+                     
                                                         <div class="rating-form row">
                                                             <div class="col-md-6 form-group">
                                                                     <label for="name">نام:</label>
@@ -263,17 +267,16 @@
                                                                     <label for="email">ایمیل:</label>
                                                                     <input name="email" id="email" placeholder="مثال: Example@gmail.com" type="email">
                                                                 </div>
-                                                                <div class="col-12 form-group">
-                                                                    <label for="your-review">نظر شما:</label>
-                                                                    <textarea name="message" id="message" placeholder="نظر خود را وارد کنید..."></textarea>
-                                                                </div>
+                                                            <div class="col-12 form-group">
+                                                                <label for="your-review">نظر شما:</label>
+                                                                <textarea name="message" id="message" placeholder="نظر خود را وارد کنید..."></textarea>
+                                                            </div>
+                                                            <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                            <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
                                                                 <div class="col-12">
                                                                     <input value="ارسال" type="submit">
                                                                 </div>
-
-                                                                <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
-                                                                <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
-                                                            </div>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -287,5 +290,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

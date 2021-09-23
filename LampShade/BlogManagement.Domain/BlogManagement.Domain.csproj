@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="ArticleCategoryAgg\" />
+    <Folder Include="ArticleAgg\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\0_Framwork\0_Framework.csproj" />
-    <ProjectReference Include="..\BlogManagement.Application.contract\BlogManagement.Application.contract.csproj" />
+    <ProjectReference Include="..\BlogManagement.Application.Contract\BlogManagement.Application.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

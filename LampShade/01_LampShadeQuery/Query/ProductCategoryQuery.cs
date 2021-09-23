@@ -6,9 +6,9 @@ using _01_LampShadeQuery.Contracts.Product;
 using _01_LampShadeQuery.Contracts.ProductCategory;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
-using Shopmanagement.infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using DiscountManagement.Infrastructure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_LampShadeQuery.Query
 {
@@ -38,7 +38,7 @@ namespace _01_LampShadeQuery.Query
                     x.DiscountRate,
                     x.ProductId,
                     x.EndDate
-                }).ToList();
+                }).AsNoTracking().ToList();
 
 
             var category = _shopContext.ProductCategories
@@ -56,7 +56,7 @@ namespace _01_LampShadeQuery.Query
                     KeyWords = x.KeyWords,
                     Products = MapProduct(x.Products),
                     Slug = x.Slug
-                }).FirstOrDefault(p => p.Slug == slug);
+                }).AsNoTracking().FirstOrDefault(p => p.Slug == slug);
 
             foreach (var product in category.Products)
             {
@@ -93,7 +93,7 @@ namespace _01_LampShadeQuery.Query
                     PictureTitle = x.PictureTitle,
                     PictureAlt = x.PictureAlt,
                     Slug = x.Slug,
-                }).ToList();
+                }).AsNoTracking().ToList();
         }
 
         public List<ProductCategoryQueryModel> GetProductCategoryWithProducts()
@@ -112,7 +112,7 @@ namespace _01_LampShadeQuery.Query
                     Id = x.Id,
                     Name = x.Name,
                     Products = MapProduct(x.Products),
-                }).ToList();
+                }).AsNoTracking().ToList();
 
             foreach (var category in categories)
             {

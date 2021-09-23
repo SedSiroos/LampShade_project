@@ -5,7 +5,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>سیروس استور</title>
+    @if (ViewData["Title"] != null)
+    {
+        <title>@ViewData["Title"]|سیروس استور</title>
+    }
+    else
+    {
+        <title>سیروس استور</title>
+    }
+    <meta name="keywords" content="@ViewData["keywords"]" />
+    <meta name="description" content="@ViewData["metaDescription"]" />
+
+
     <link href="~/Theme/assets/css/vendors.css" rel="stylesheet">
     <link href="~/Theme/assets/css/style.css" rel="stylesheet">
     <link href="~/Theme/assets/css/Custom.css" rel="stylesheet" />
@@ -35,9 +46,16 @@
     <div id="scroll-top">
         <span>برو بالا</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
     </div>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/Theme/assets/js/vendors.js"></script>
     <script src="~/Theme/assets/js/active.js"></script>
+    <script src="~/Theme/assets/js/plugins.js"></script>
+    <script src="~/Theme/assets/js/custom.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            updateCart();
+        });
+    </script>
 </body>
 </html>

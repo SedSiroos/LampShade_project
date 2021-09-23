@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _01_LampShadeQuery.Contracts.CommentQueryModels;
 
 namespace _01_LampShadeQuery.Contracts.Product
 {
@@ -17,6 +18,7 @@ namespace _01_LampShadeQuery.Contracts.Product
         public string Keywords { get; set; }
         public string MetaDescription { get; set; }
         public string Price { get; set; }
+        public double DoublePrice { get; set; }
         public string PriceWithDiscount { get; set; }
         public bool HasDiscount { get; set; }
         public int DiscountRate { get; set; }

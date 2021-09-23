@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\01_LampShadeQuery\01_LampShadeQuery.csproj" />
     <ProjectReference Include="..\InventoryManagement.infrastructore.EFCore\InventoryManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\InventoryManagment.Domain\InventoryManagement.Domain.csproj" />
     <ProjectReference Include="..\InvetoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj" />

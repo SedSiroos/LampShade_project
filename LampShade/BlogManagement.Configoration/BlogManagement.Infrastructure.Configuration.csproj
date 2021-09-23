@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\01_LampShadeQuery\01_LampShadeQuery.csproj" />
+    <ProjectReference Include="..\BlogManagement.Application.Contract\BlogManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\BlogManagement.Inrastrcture\BlogManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\BlogManagment.Application\BlogManagement.Application.csproj" />
+  </ItemGroup>
+
+</Project>

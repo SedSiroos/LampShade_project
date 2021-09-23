@@ -6,7 +6,7 @@ using _0_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.Slides;
 using ShopManagement.Domain.SlideAgg;
 
-namespace Shopmanagement.infrastructure.EFCore.Repository
+namespace ShopManagement.Infrastructure.EFCore.Repository
 {
     public class SlideRepository : RepositoryBase<long, Slide>, ISlideRepository
     {

@@ -65,18 +65,18 @@ namespace _0_Framework.Application
 
         public static string ToPersianNumber(this int intNum)
         {
-            var chash = intNum.ToString();
+            var cash = intNum.ToString();
             for (var i = 0; i < 10; i++)
-                chash = chash.Replace(En[i], Pn[i]);
-            return chash;
+                cash = cash.Replace(En[i], Pn[i]);
+            return cash;
         }
 
-        public static DateTime? FromFarsiDate(this string InDate)
+        public static DateTime? FromFarsiDate(this string inDate)
         {
-            if (string.IsNullOrEmpty(InDate))
+            if (string.IsNullOrEmpty(inDate))
                 return null;
 
-            var spited = InDate.Split('/');
+            var spited = inDate.Split('/');
             if (spited.Length < 3)
                 return null;
 

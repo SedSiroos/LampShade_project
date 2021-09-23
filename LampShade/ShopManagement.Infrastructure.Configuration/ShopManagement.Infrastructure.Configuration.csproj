@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\01_LampShadeQuery\01_LampShadeQuery.csproj" />
+    <ProjectReference Include="..\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\ShopManagement.Domain\ShopManagement.Domain.csproj" />
+    <ProjectReference Include="..\Shopmanagement.infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\ShopMangement.Application\ShopManagement.Application.csproj" />
+  </ItemGroup>
+
+</Project>

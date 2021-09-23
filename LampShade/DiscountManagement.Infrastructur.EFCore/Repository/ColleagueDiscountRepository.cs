@@ -4,7 +4,7 @@ using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.CollegueDiscount;
 using DiscountManagement.Domain.ColleagueDiscountAgg;
-using Shopmanagement.infrastructure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EFCore.Repository
 {
